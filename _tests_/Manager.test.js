@@ -7,6 +7,7 @@ test('test if we can get constructor values for the manager object', () => {
     expect(manager.name).toEqual(expect.any(String));
     expect(manager.id).toBe('19');
     expect(manager.email).toEqual(expect.any(String));
+    expect(manager.officeNumber).toBe('01');
 });
 
 // Gets name from getName() method
