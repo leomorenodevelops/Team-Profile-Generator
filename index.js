@@ -19,12 +19,12 @@ const promptManager = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is your name? (Required)',
+            message: 'What is the name of the manager? (Required)',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter the name of the manager!');
                     return false;
                 }
             }
@@ -32,12 +32,12 @@ const promptManager = () => {
         {
             type: 'input',
              name: 'employeeId',
-             message: 'Enter your employee ID (Required)',
+             message: 'Enter employee ID (Required)',
              validate: employeeId => {
                 if (employeeId) {
                     return true;
                 } else {
-                    console.log('Please enter your employee ID!');
+                    console.log('Please enter employee ID!');
                     return false;
                 }
              }
@@ -45,12 +45,12 @@ const promptManager = () => {
         {
             type: 'input',
             name: 'email',
-            message: 'Enter your email address (Required)',
+            message: 'Enter email address (Required)',
             validate: email => {
                 if (email) {
                     return true;
                 } else {
-                    console.log('Please enter your email address!');
+                    console.log('Please enter email address!');
                     return false;
                 }
             }
@@ -58,12 +58,12 @@ const promptManager = () => {
         {
             type: 'input',
             name: 'officeNumber',
-            message: 'Enter your office number (Required)',
+            message: 'Enter office number (Required)',
             validate: officeNumber => {
                 if (officeNumber) {
                     return true;
                 } else {
-                    console.log('Please enter your office number!');
+                    console.log('Please enter office number!');
                     return false;
                 }
             }
@@ -122,12 +122,12 @@ const promptEngineer = () => {
         {
             type: 'input',
             name: 'employeeId',
-            message: 'Enter your employee ID (Required)',
+            message: 'Enter employee ID (Required)',
             validate: employeeId => {
                 if (employeeId) {
                     return true;
                 } else {
-                    console.log('Please enter your employee ID!');
+                    console.log('Please enter employee ID!');
                     return false;
                 }
             }
@@ -135,12 +135,12 @@ const promptEngineer = () => {
         {
             type: 'input',
             name: 'email',
-            message: 'Enter your email address (Required)',
+            message: 'Enter email address (Required)',
             validate: email => {
                 if (email) {
                     return true;
                 } else {
-                    console.log('Please enter your email address!');
+                    console.log('Please enter email address!');
                     return false;
                 }
             }
@@ -148,12 +148,12 @@ const promptEngineer = () => {
         {
             type: 'input',
             name: 'githubUsername',
-            message: 'Enter your Github username (Required)',
+            message: 'Enter Github username (Required)',
             validate: githubUsername => {
                 if (githubUsername) {
                     return true;
                 } else {
-                    console.log('Please enter your Github username!');
+                    console.log('Please enter Github username!');
                     return false;
                 }
             }
@@ -162,6 +162,74 @@ const promptEngineer = () => {
         console.log(answers);
         const engineer = new Engineer(answers.name, answers.employeeId, answers.email, answers.githubUsername);
         teamMembers.push(engineer);
+        promptMenu();
+    })
+};
+
+const promptIntern = () => {
+    console.log(`
+    ===============
+    Add a New Intern
+    ===============
+    `);
+
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the name of the intern? (Required)',
+            validate: internName => {
+                if (internName) {
+                    return true;
+                } else {
+                    console.log('Please enter the name of the intern!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'What is the employee ID (Required)',
+            validate: employeeId => {
+                if (employeeId) {
+                    return true;
+                } else {
+                    console.log('Please enter employee ID!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the email address (Required)',
+            validate: email => {
+                if (email) {
+                    return true;
+                } else {
+                    console.log('Please enter email address!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'Enter the school name (Required)',
+            validate: school => {
+                if (school) {
+                    return true;
+                } else {
+                    console.log('Please enter school name!');
+                    return false;
+                }
+            }
+        }
+    ]).then(answers => {
+        console.log(answers);
+        const intern = new Intern(answers.name, answers.employeeId, answers.email, answers.school);
+        teamMembers.push(intern);
         promptMenu();
     })
 };
