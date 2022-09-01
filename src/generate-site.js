@@ -61,7 +61,7 @@ const generateTeam = (team) => {
         html.push(interHtml);
     }
 
-    // Create a loop for all the employees
+    // Create a for loop for all the employees
     for (let i = 0; i < team.length; i++) {
         if (team[i].getRole() === "Manager") {
             generateManager(team[i]);
@@ -73,4 +73,46 @@ const generateTeam = (team) => {
             generateIntern(team[i]);
         }
     }
+
+    // Join the HTML blocks
+    return html.join('');
 }
+
+// export function to generate entire page
+module.exports = team => {
+
+    return `
+    <!doctype html>
+<html lang="en">
+  <head>
+    <title>My Team</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+  </head>
+  
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 jumbotron mb-3 team-heading bg-danger">
+                <h1 class="text-center text-white">My Team</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="row team-area col-12 d-flex justify-content-center">
+                ${generateTeam(team)}
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
+    `;
+};
