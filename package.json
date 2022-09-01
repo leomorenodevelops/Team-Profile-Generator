@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/leomorenodevelops/Team-Profile-Generator#readme",
   "dependencies": {
-    "inquirer": "^9.1.0",
+    "8": "^0.0.1",
+    "inquirer": "^8.2.4",
     "jest": "^28.1.3"
   }
 }
